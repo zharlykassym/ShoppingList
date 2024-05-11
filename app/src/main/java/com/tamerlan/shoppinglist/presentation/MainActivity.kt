@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.tamerlan.shoppinglist.R
 import com.tamerlan.shoppinglist.domain.AddShopItemUseCase
+import com.tamerlan.shoppinglist.domain.ShopItem
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,5 +34,6 @@ class MainActivity : AppCompatActivity() {
                 recycledViewPool.setMaxRecycledViews(VIEW_TYPE_DISABLED, MAX_POOL_SIZE)
             }
         }
+        shopListAdapter.onShopItemLongClickListener = { viewModel.changeEnableState(it) }
     }
 }
