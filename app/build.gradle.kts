@@ -7,6 +7,10 @@ android {
     namespace = "com.tamerlan.shoppinglist"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.tamerlan.shoppinglist"
         minSdk = 24
