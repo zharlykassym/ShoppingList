@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/shop_item_container"
-    android:name="com.tamerlan.shoppinglist.presentation.ShopItemFragment"
     android:layout_height="match_parent"
     tools:context=".presentation.ShopItemActivity"
     tools:layout="@layout/fragment_shop_item" />
