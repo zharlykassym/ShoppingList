@@ -20,4 +20,6 @@
 - **DiffUtil**: Для эффективного обновления списка при изменении данных.
 - **Data Binding**: Для связывания пользовательского интерфейса с данными и упрощения работы с UI.
 
+https://github.com/user-attachments/assets/6dfec92c-1b38-4c8c-b820-6f6befaaafa5
+
 
