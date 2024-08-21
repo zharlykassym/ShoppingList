@@ -11,7 +11,9 @@ import com.tamerlan.shoppinglist.domain.ShopItem
 import java.lang.Exception
 
 class ShopItemViewModel : ViewModel() {
+
     private val repository = ShopListRepositoryImpl
+
     private val getShopItemUseCase = GetShopItemUseCase(repository)
     private val addShopItemUseCase = AddShopItemUseCase(repository)
     private val editShopItemUseCase = EditShopItemUseCase(repository)
@@ -20,10 +22,13 @@ class ShopItemViewModel : ViewModel() {
     val errorInputName: LiveData<Boolean>
         get() = _errorInputName
 
+    private val _errorInputCount = MutableLiveData<Boolean>()
+    val errorInputCount: LiveData<Boolean>
+        get() = _errorInputCount
 
     private val _shopItem = MutableLiveData<ShopItem>()
     val shopItem: LiveData<ShopItem>
-        get()= _shopItem
+        get() = _shopItem
 
     private val _shouldCloseScreen = MutableLiveData<Unit>()
     val shouldCloseScreen: LiveData<Unit>
@@ -33,9 +38,6 @@ class ShopItemViewModel : ViewModel() {
         val item = getShopItemUseCase.getShopItem(shopItemId)
         _shopItem.value = item
     }
-    private val _errorInputCount = MutableLiveData<Boolean>()
-    val errorInputCount: LiveData<Boolean>
-        get() = _errorInputCount
 
     fun addShopItem(inputName: String?, inputCount: String?) {
         val name = parseName(inputName)
@@ -46,10 +48,9 @@ class ShopItemViewModel : ViewModel() {
             addShopItemUseCase.addShopItem(shopItem)
             finishWork()
         }
-
     }
 
-    fun editShopItem(inputName:String?, inputCount: String?) {
+    fun editShopItem(inputName: String?, inputCount: String?) {
         val name = parseName(inputName)
         val count = parseCount(inputCount)
         val fieldsValid = validateInput(name, count)
@@ -59,7 +60,6 @@ class ShopItemViewModel : ViewModel() {
                 editShopItemUseCase.editShopItem(item)
                 finishWork()
             }
-
         }
     }
 
@@ -86,18 +86,17 @@ class ShopItemViewModel : ViewModel() {
             result = false
         }
         return result
-
     }
 
-    fun resetErrorInputName(){
+    fun resetErrorInputName() {
         _errorInputName.value = false
     }
 
-    fun resetErrorInputCount(){
+    fun resetErrorInputCount() {
         _errorInputCount.value = false
     }
 
-    private fun finishWork(){
+    private fun finishWork() {
         _shouldCloseScreen.value = Unit
     }
 }
